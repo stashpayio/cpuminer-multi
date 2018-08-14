@@ -895,6 +895,7 @@ static bool gbt_work_decode(const json_t *val, struct work *work)
 		cbtx_size += (int) pk_script_size;
 		le32enc((uint32_t *)(cbtx+cbtx_size), 0); /* lock time */
 		cbtx_size += 4;
+		cbtx[cbtx_size++] = 0; /* empty joinsplit array */
 		coinbase_append = true;
 	}
 	if (coinbase_append) {
